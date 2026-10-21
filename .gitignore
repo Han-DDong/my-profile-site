@@ -1,0 +1,18 @@
+# macOS가 자동 생성하는 폴더 메타데이터 파일
+.DS_Store
+
+# 에디터/IDE 설정 (개인 환경마다 다르므로 제외)
+.vscode/
+.idea/
+*.swp
+
+# 의존성 폴더 (나중에 npm을 쓰게 될 경우 대비)
+node_modules/
+
+# 로그 파일
+*.log
+npm-debug.log*
+
+# 환경 변수 파일 (API 키 등 비밀 정보가 들어갈 수 있음)
+.env
+.env.*

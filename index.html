@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나의 프로필</title>
+  <meta name="description" content="개인 프로필 웹사이트" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- 저장된 테마를 페이지 그리기 전에 적용 (깜빡임 방지) -->
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
+      var isDark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', isDark);
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+          },
+          // 색상은 style.css의 CSS 변수를 따라가므로 다크/라이트 전환이 자동으로 반영됩니다.
+          colors: {
+            white: 'rgb(var(--c-white) / <alpha-value>)',
+            night: 'rgb(var(--c-night) / <alpha-value>)',
+            panel: 'rgb(var(--c-panel) / <alpha-value>)',
+            slate: {
+              100: 'rgb(var(--c-slate-100) / <alpha-value>)',
+              200: 'rgb(var(--c-slate-200) / <alpha-value>)',
+              300: 'rgb(var(--c-slate-300) / <alpha-value>)',
+              400: 'rgb(var(--c-slate-400) / <alpha-value>)',
+              500: 'rgb(var(--c-slate-500) / <alpha-value>)',
+            },
+            onaccent: '#ffffff',
+            accent: { DEFAULT: '#6366f1', soft: '#8b5cf6' },
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-night text-slate-200 font-sans antialiased">
+
+  <!-- 헤더 / 네비게이션 -->
+  <header id="header" class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-night/70 backdrop-blur-md transition">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
+      <a href="#home" class="flex items-center gap-2 text-lg font-bold text-white">
+        <span class="text-accent-soft">&lt;/&gt;</span>
+        <span data-field="logo"></span>
+      </a>
+
+      <ul class="hidden items-center gap-8 text-sm font-medium text-slate-400 md:flex">
+        <li><a href="#home" class="nav-link transition hover:text-white">Home</a></li>
+        <li><a href="#about" class="nav-link transition hover:text-white">About</a></li>
+        <li><a href="#skills" class="nav-link transition hover:text-white">Skills</a></li>
+        <li><a href="#projects" class="nav-link transition hover:text-white">Projects</a></li>
+        <li><a href="#contact" class="nav-link transition hover:text-white">Contact</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" type="button" class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-lg transition hover:border-accent/60"></button>
+        <button id="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false"
+                class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-white/10 md:hidden">
+          <span class="block h-0.5 w-5 bg-white transition"></span>
+          <span class="block h-0.5 w-5 bg-white transition"></span>
+          <span class="block h-0.5 w-5 bg-white transition"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- 모바일 드롭다운 -->
+    <ul id="mobile-menu" class="hidden border-t border-white/5 bg-night/95 px-4 py-4 md:hidden">
+      <li><a href="#home" class="block py-2 text-slate-300 hover:text-white">Home</a></li>
+      <li><a href="#about" class="block py-2 text-slate-300 hover:text-white">About</a></li>
+      <li><a href="#skills" class="block py-2 text-slate-300 hover:text-white">Skills</a></li>
+      <li><a href="#projects" class="block py-2 text-slate-300 hover:text-white">Projects</a></li>
+      <li><a href="#contact" class="block py-2 text-slate-300 hover:text-white">Contact</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="relative overflow-hidden pt-28 pb-12 md:pt-32">
+      <div class="dot-pattern pointer-events-none absolute left-[55%] top-24 h-40 w-40 opacity-40"></div>
+
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 md:grid-cols-2 md:px-6">
+        <div class="fade-in">
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-panel px-4 py-1.5 text-sm text-slate-300">
+            👋 안녕하세요, 저는
+          </span>
+          <h1 class="mt-6 text-5xl font-black leading-tight text-white md:text-7xl">
+            <span class="gradient-text" data-field="nameHead"></span><span data-field="nameTail"></span>
+          </h1>
+          <p class="mt-3 text-2xl font-bold text-slate-100 md:text-3xl" data-field="role"></p>
+          <p class="mt-6 max-w-lg whitespace-pre-line leading-relaxed text-slate-400" data-field="intro"></p>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#contact" class="rounded-lg bg-gradient-to-r from-accent to-accent-soft px-6 py-3 font-semibold text-onaccent shadow-lg shadow-accent/30 transition hover:-translate-y-0.5">
+              연락하기 →
+            </a>
+            <a href="#projects" class="rounded-lg border border-white/15 bg-panel px-6 py-3 font-semibold text-white transition hover:border-accent/60">
+              프로젝트 보기
+            </a>
+          </div>
+
+          <div class="mt-8 flex items-center gap-4 text-sm text-slate-400">
+            <span>Follow me on</span>
+            <div class="flex gap-3" data-field="socials"></div>
+          </div>
+        </div>
+
+        <div class="fade-in relative mx-auto flex h-80 w-80 items-center justify-center md:h-96 md:w-96">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-br from-accent to-accent-soft opacity-80 blur-[2px]"></div>
+          <div class="relative flex h-64 w-64 items-center justify-center rounded-full border-4 border-night bg-panel text-7xl font-black text-white md:h-80 md:w-80">
+            <span data-field="initials"></span>
+          </div>
+          <div class="float-card absolute -left-4 top-10 rounded-xl border border-white/10 bg-panel/90 px-5 py-4 backdrop-blur">
+            <p class="text-2xl font-bold text-accent-soft" data-field="stat1Value"></p>
+            <p class="text-xs text-slate-400" data-field="stat1Label"></p>
+          </div>
+          <div class="float-card absolute -right-2 bottom-10 rounded-xl border border-white/10 bg-panel/90 px-5 py-4 backdrop-blur">
+            <p class="text-2xl font-bold text-accent-soft" data-field="stat2Value"></p>
+            <p class="text-xs text-slate-400" data-field="stat2Label"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 통계 바 -->
+    <section class="mx-auto max-w-6xl px-4 md:px-6">
+      <div class="grid grid-cols-2 gap-6 rounded-2xl border border-white/10 bg-panel p-6 md:grid-cols-4 md:p-8" data-field="stats"></div>
+    </section>
+
+    <!-- About + Skills -->
+    <section id="about" class="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:px-6">
+      <div class="fade-in">
+        <h2 class="section-title">About Me</h2>
+        <p class="mt-6 whitespace-pre-line leading-relaxed text-slate-400" data-field="about"></p>
+      </div>
+
+      <div id="skills" class="fade-in">
+        <h2 class="section-title">My Skills</h2>
+        <ul class="mt-8 grid gap-6 sm:grid-cols-2" data-field="skills"></ul>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="mx-auto max-w-6xl px-4 py-10 md:px-6">
+      <div class="fade-in mb-6 flex items-end justify-between">
+        <h2 class="section-title">Featured Projects</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3" data-field="projects"></div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mx-auto max-w-6xl px-4 py-10 md:px-6">
+      <div class="fade-in rounded-2xl border border-white/10 bg-panel p-6 md:p-10">
+        <div class="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+          <div>
+            <h2 class="text-3xl font-bold text-white md:text-4xl">Let's Work Together!</h2>
+            <p class="mt-3 whitespace-pre-line text-slate-400" data-field="contactText"></p>
+            <ul class="mt-6 space-y-2 text-sm text-slate-300" data-field="contactList"></ul>
+          </div>
+          <a data-field="contactCta" href="#" target="_blank" rel="noopener"
+             class="rounded-lg bg-gradient-to-r from-accent to-accent-soft px-8 py-4 text-center font-semibold text-onaccent shadow-lg shadow-accent/30 transition hover:-translate-y-0.5">
+            Get In Touch →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="border-t border-white/5">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-4 text-sm text-slate-500 md:flex-row md:px-6">
+      <p>© <span data-field="year"></span> <span data-field="footerName"></span>. All rights reserved.</p>
+      <a href="#home" class="rounded-full border border-white/10 px-4 py-2 transition hover:border-accent/60 hover:text-white">↑ 맨 위로</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

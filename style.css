@@ -1,0 +1,102 @@
+/* Tailwind로 처리하기 번거로운 스타일만 모아 둡니다. */
+
+/* 색상 토큰: 기본은 라이트, html.dark일 때 다크 값을 씁니다. (index.html의 tailwind.config가 이 값을 참조) */
+:root {
+  --c-white: 15 23 42;
+  --c-night: 248 250 252;
+  --c-panel: 255 255 255;
+  --c-slate-100: 15 23 42;
+  --c-slate-200: 30 41 59;
+  --c-slate-300: 51 65 85;
+  --c-slate-400: 71 85 105;
+  --c-slate-500: 100 116 139;
+  color-scheme: light;
+}
+html.dark {
+  --c-white: 255 255 255;
+  --c-night: 11 11 20;
+  --c-panel: 18 18 31;
+  --c-slate-100: 241 245 249;
+  --c-slate-200: 226 232 240;
+  --c-slate-300: 203 213 225;
+  --c-slate-400: 148 163 184;
+  --c-slate-500: 100 116 139;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* 이름/강조 텍스트 그라데이션 */
+.gradient-text {
+  background: linear-gradient(90deg, #6366f1, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 섹션 제목 */
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: rgb(var(--c-white));
+}
+
+/* 히어로 우측 장식용 점 패턴 */
+.dot-pattern {
+  background-image: radial-gradient(#6366f1 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+
+/* 떠 있는 통계 카드 */
+.float-card {
+  animation: float 4s ease-in-out infinite;
+}
+.float-card + .float-card {
+  animation-delay: -2s;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 스크롤 시 페이드인 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 스킬 진행 바 */
+.skill-bar {
+  width: 0;
+  transition: width 1.2s ease;
+}
+
+/* 현재 섹션 메뉴 강조 (script.js가 .is-active 추가) */
+.nav-link.is-active {
+  color: rgb(var(--c-white));
+}
+.nav-link.is-active::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  margin: 4px auto 0;
+  border-radius: 9999px;
+  background: #8b5cf6;
+}
+
+/* 사용자가 반응을 줄이길 원하면 애니메이션 끄기 */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  .float-card { animation: none; }
+  .skill-bar { transition: none; }
+}

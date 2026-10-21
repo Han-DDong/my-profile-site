@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c4a6e"/>
+      <stop offset="1" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#4338ca"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- 대시보드 창 -->
+  <rect x="90" y="60" width="620" height="330" rx="16" fill="#0b0b14" stroke="#ffffff" stroke-opacity="0.12"/>
+  <circle cx="120" cy="86" r="5" fill="#f87171"/>
+  <circle cx="138" cy="86" r="5" fill="#fbbf24"/>
+  <circle cx="156" cy="86" r="5" fill="#34d399"/>
+  <rect x="200" y="78" width="380" height="16" rx="8" fill="#1e1e33"/>
+
+  <!-- 도시 / 현재 기온 -->
+  <rect x="120" y="116" width="110" height="14" rx="7" fill="#e2e8f0"/>
+  <text x="120" y="220" font-family="Inter, sans-serif" font-size="72" font-weight="800" fill="#ffffff">24°</text>
+  <rect x="120" y="236" width="150" height="8" rx="4" fill="#64748b"/>
+
+  <!-- 날씨 아이콘 -->
+  <circle cx="470" cy="170" r="46" fill="#fbbf24"/>
+  <ellipse cx="520" cy="200" rx="54" ry="30" fill="#e2e8f0"/>
+  <ellipse cx="490" cy="196" rx="36" ry="26" fill="#e2e8f0"/>
+
+  <!-- 요일별 예보 카드 -->
+  <rect x="120" y="262" width="570" height="112" rx="12" fill="#1a1a2e"/>
+  <rect x="140" y="282" width="34" height="8" rx="4" fill="#94a3b8"/>
+  <rect x="221" y="282" width="34" height="8" rx="4" fill="#94a3b8"/>
+  <rect x="302" y="282" width="34" height="8" rx="4" fill="#94a3b8"/>
+  <rect x="383" y="282" width="34" height="8" rx="4" fill="#94a3b8"/>
+  <rect x="464" y="282" width="34" height="8" rx="4" fill="#94a3b8"/>
+  <rect x="545" y="282" width="34" height="8" rx="4" fill="#94a3b8"/>
+  <rect x="626" y="282" width="34" height="8" rx="4" fill="#94a3b8"/>
+
+  <!-- 기온 막대 그래프 -->
+  <rect x="140" y="310" width="34" height="48" rx="6" fill="url(#bar)"/>
+  <rect x="221" y="296" width="34" height="62" rx="6" fill="url(#bar)"/>
+  <rect x="302" y="318" width="34" height="40" rx="6" fill="url(#bar)"/>
+  <rect x="383" y="300" width="34" height="58" rx="6" fill="url(#bar)"/>
+  <rect x="464" y="290" width="34" height="68" rx="6" fill="url(#bar)"/>
+  <rect x="545" y="312" width="34" height="46" rx="6" fill="url(#bar)"/>
+  <rect x="626" y="304" width="34" height="54" rx="6" fill="url(#bar)"/>
+</svg>
